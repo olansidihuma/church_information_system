@@ -1,0 +1,27 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Handle CORS preflight requests
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]
+
+# API Routes
+RewriteRule ^auth/login$ controllers/auth.php [L]
+RewriteRule ^auth/register$ controllers/auth.php [L]
+RewriteRule ^auth/logout$ controllers/auth.php [L]
+
+RewriteRule ^activities$ controllers/activities.php [L]
+RewriteRule ^activities/([0-9]+)$ controllers/activities.php [L]
+
+RewriteRule ^services/prayer-request$ controllers/services.php [L]
+RewriteRule ^services/baptism-request$ controllers/services.php [L]
+RewriteRule ^services/child-dedication$ controllers/services.php [L]
+
+RewriteRule ^family/members$ controllers/family.php [L]
+
+RewriteRule ^chat/messages$ controllers/chat.php [L]
+
+# If file doesn't exist, return 404
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ - [R=404,L]
