@@ -34,6 +34,11 @@ class DashboardScreen extends GetView<DashboardController> {
               onTap: () => Get.back(),
             ),
             ListTile(
+              leading: const Icon(Icons.menu_book),
+              title: const Text('Baca Alkitab'),
+              onTap: () => Get.toNamed(AppRoutes.bible),
+            ),
+            ListTile(
               leading: const Icon(Icons.person),
               title: const Text('Profile'),
               onTap: () => Get.toNamed(AppRoutes.profile),
@@ -81,6 +86,12 @@ class DashboardScreen extends GetView<DashboardController> {
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
                 children: [
+                  _ServiceCard(
+                    icon: Icons.menu_book,
+                    title: 'Baca Alkitab',
+                    color: Colors.purple,
+                    onTap: () => Get.toNamed(AppRoutes.bible),
+                  ),
                   _ServiceCard(
                     icon: Icons.pray,
                     title: 'Prayer Request',

@@ -45,4 +45,10 @@ class AppRoutes {
   static const String adminDashboard = '/admin/dashboard';
   static const String scheduleActivity = '/admin/schedule-activity';
   static const String sendNotification = '/admin/send-notification';
+  
+  // Bible Reading Routes
+  static const String bible = '/bible';
+  static const String bibleReading = '/bible-reading';
+  static const String bibleProgress = '/bible-progress';
+  static const String bibleSchedule = '/bible-schedule';
 }

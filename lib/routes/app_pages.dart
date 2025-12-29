@@ -24,6 +24,11 @@ import 'package:church_information_system/screens/chat/chat_binding.dart';
 import 'package:church_information_system/screens/family/family_members_screen.dart';
 import 'package:church_information_system/screens/family/add_family_member_screen.dart';
 import 'package:church_information_system/screens/family/family_binding.dart';
+import 'package:church_information_system/screens/bible/bible_screen.dart';
+import 'package:church_information_system/screens/bible/bible_reading_screen.dart';
+import 'package:church_information_system/screens/bible/bible_progress_screen.dart';
+import 'package:church_information_system/screens/bible/bible_schedule_screen.dart';
+import 'package:church_information_system/screens/bible/bible_binding.dart';
 
 /// Application pages configuration
 /// 
@@ -117,6 +122,28 @@ class AppPages {
       name: AppRoutes.addFamilyMember,
       page: () => const AddFamilyMemberScreen(),
       binding: FamilyBinding(),
+    ),
+    
+    // Bible Reading
+    GetPage(
+      name: AppRoutes.bible,
+      page: () => const BibleScreen(),
+      binding: BibleBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.bibleReading,
+      page: () => const BibleReadingScreen(),
+      binding: BibleBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.bibleProgress,
+      page: () => const BibleProgressScreen(),
+      binding: BibleBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.bibleSchedule,
+      page: () => const BibleScheduleScreen(),
+      binding: BibleBinding(),
     ),
   ];
 }

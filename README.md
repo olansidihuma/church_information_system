@@ -28,6 +28,15 @@ Aplikasi Sistem Informasi Gereja Modern berbasis Flutter dengan PHP Native API d
 - Simpan login anggota menggunakan SharedPreferences
 - Simpan jadwal lokal dengan alarm dan local notification
 
+### 7. **Baca Alkitab Offline (BARU!)**
+- Pembacaan Alkitab offline dengan daftar lengkap kitab
+- Pelacakan progress bacaan (kitab, pasal, ayat)
+- Jadwal membaca harian yang dapat dikustomisasi
+- Pengingat membaca dengan notifikasi
+- Penanda progress harian (berapa ayat/pasal sudah dibaca)
+- Statistik bacaan (total ayat dan pasal yang telah dibaca)
+- Pemilihan kitab dari Perjanjian Lama dan Perjanjian Baru
+
 ## Teknologi yang Digunakan
 
 ### Frontend (Flutter)

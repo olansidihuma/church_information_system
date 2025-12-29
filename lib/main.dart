@@ -4,6 +4,7 @@ import 'package:church_information_system/routes/app_routes.dart';
 import 'package:church_information_system/routes/app_pages.dart';
 import 'package:church_information_system/services/notification_service.dart';
 import 'package:church_information_system/services/storage_service.dart';
+import 'package:church_information_system/services/bible_service.dart';
 import 'package:church_information_system/config/theme.dart';
 
 /// Main entry point for the Church Information System application
@@ -13,6 +14,7 @@ import 'package:church_information_system/config/theme.dart';
 /// - Request prayer, baptism, and child dedication services
 /// - Communicate with church administrators
 /// - Receive timely notifications about upcoming services
+/// - Read Bible offline with progress tracking
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -29,6 +31,9 @@ Future<void> initServices() async {
   
   // Initialize notification service
   await Get.putAsync(() => NotificationService().init());
+  
+  // Initialize Bible service
+  await Get.putAsync(() => BibleService().init());
 }
 
 /// Root application widget
