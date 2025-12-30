@@ -61,12 +61,26 @@ class BibleService extends GetxService {
       final document = xml.XmlDocument.parse(xmlString);
       
       // Find the book
-      final bookElement = document.findAllElements('BIBLEBOOK')
-          .firstWhere((element) => element.getAttribute('bname') == bookName);
+      final bookElements = document.findAllElements('BIBLEBOOK')
+          .where((element) => element.getAttribute('bname') == bookName);
+      
+      if (bookElements.isEmpty) {
+        print('Book not found: $bookName');
+        return null;
+      }
+      
+      final bookElement = bookElements.first;
       
       // Find the chapter
-      final chapterElement = bookElement.findAllElements('CHAPTER')
-          .firstWhere((element) => element.getAttribute('cnumber') == chapterNumber.toString());
+      final chapterElements = bookElement.findAllElements('CHAPTER')
+          .where((element) => element.getAttribute('cnumber') == chapterNumber.toString());
+      
+      if (chapterElements.isEmpty) {
+        print('Chapter not found: $bookName chapter $chapterNumber');
+        return null;
+      }
+      
+      final chapterElement = chapterElements.first;
       
       // Extract verses
       final verses = <BibleVerse>[];

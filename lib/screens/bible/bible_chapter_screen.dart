@@ -211,13 +211,22 @@ class BibleChapterScreen extends GetView<BibleController> {
   }
 
   void _markAsRead(String bookId, int chapterNumber) {
+    final currentProgress = controller.currentProgress.value;
+    
+    // Only increment chaptersCompleted if this is a new chapter
+    final isNewChapter = currentProgress == null || 
+                         currentProgress.bookId != bookId || 
+                         currentProgress.chapter != chapterNumber;
+    
     final progress = ReadingProgress(
       bookId: bookId,
       chapter: chapterNumber,
       verse: 1,
       lastRead: DateTime.now(),
-      versesRead: (controller.currentProgress.value?.versesRead ?? 0) + 1,
-      chaptersCompleted: (controller.currentProgress.value?.chaptersCompleted ?? 0) + 1,
+      versesRead: currentProgress?.versesRead ?? 0,
+      chaptersCompleted: isNewChapter 
+          ? (currentProgress?.chaptersCompleted ?? 0) + 1
+          : (currentProgress?.chaptersCompleted ?? 0),
     );
     
     controller.updateProgress(progress);
