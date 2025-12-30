@@ -22,6 +22,7 @@ class StorageService extends GetxService {
   static const String keyIsLoggedIn = 'is_logged_in';
   static const String keyUserData = 'user_data';
   static const String keyNotificationEnabled = 'notification_enabled';
+  static const String keyFirstLoad = 'first_load_complete';
   
   // Auth Methods
   
@@ -95,6 +96,18 @@ class StorageService extends GetxService {
   /// Check if notifications are enabled
   bool isNotificationEnabled() {
     return _prefs.getBool(keyNotificationEnabled) ?? true;
+  }
+
+  // First Load Methods
+
+  /// Check if this is the first load
+  Future<bool> isFirstLoad() async {
+    return !(_prefs.getBool(keyFirstLoad) ?? false);
+  }
+
+  /// Mark first load as complete
+  Future<bool> setFirstLoadComplete() async {
+    return await _prefs.setBool(keyFirstLoad, true);
   }
   
   // General Methods

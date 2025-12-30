@@ -30,6 +30,8 @@ import 'package:church_information_system/screens/bible/bible_chapter_screen.dar
 import 'package:church_information_system/screens/bible/bible_progress_screen.dart';
 import 'package:church_information_system/screens/bible/bible_schedule_screen.dart';
 import 'package:church_information_system/screens/bible/bible_binding.dart';
+import 'package:church_information_system/screens/information/information_screen.dart';
+import 'package:church_information_system/screens/information/information_binding.dart';
 
 /// Application pages configuration
 /// 
@@ -68,6 +70,11 @@ class AppPages {
       name: AppRoutes.dashboard,
       page: () => const DashboardScreen(),
       binding: DashboardBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.information,
+      page: () => const InformationScreen(),
+      binding: InformationBinding(),
     ),
     
     // Profile

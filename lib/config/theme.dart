@@ -9,14 +9,17 @@ class AppTheme {
   // Prevent instantiation
   AppTheme._();
   
-  // Color Palette - Modern & Fresh
-  static const Color primaryColor = Color(0xFF667EEA);
-  static const Color secondaryColor = Color(0xFF764BA2);
-  static const Color accentColor = Color(0xFFF5576C);
-  static const Color backgroundColor = Color(0xFFF8F9FA);
+  // Color Palette - Modern & Soft
+  static const Color primaryColor = Color(0xFF8B9EE8); // Soft blue-purple
+  static const Color secondaryColor = Color(0xFFA48BC4); // Soft lavender
+  static const Color accentColor = Color(0xFFFF9AA2); // Soft coral
+  static const Color backgroundColor = Color(0xFFFAFBFD);
   static const Color surfaceColor = Colors.white;
-  static const Color textPrimaryColor = Color(0xFF2C3E50);
-  static const Color textSecondaryColor = Color(0xFF7F8C8D);
+  static const Color textPrimaryColor = Color(0xFF4A5568);
+  static const Color textSecondaryColor = Color(0xFF9CA3AF);
+  static const Color softPink = Color(0xFFFFDAC1);
+  static const Color softMint = Color(0xFFB5EAD7);
+  static const Color softYellow = Color(0xFFFFE4B5);
   
   // Light Theme
   static ThemeData get lightTheme {
