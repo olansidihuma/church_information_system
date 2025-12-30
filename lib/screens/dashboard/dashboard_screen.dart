@@ -94,21 +94,12 @@ class DashboardScreen extends GetView<DashboardController> {
               // Services Section Header
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Our Services',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text('View All'),
-                    ),
-                  ],
+                child: Text(
+                  'Our Services',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
               ),
               

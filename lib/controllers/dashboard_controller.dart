@@ -72,11 +72,16 @@ class DashboardController extends GetxController {
       }
       
       if (bannerPageController.hasClients) {
-        bannerPageController.animateToPage(
-          currentBannerIndex.value,
-          duration: const Duration(milliseconds: 500),
-          curve: Curves.easeInOut,
-        );
+        try {
+          bannerPageController.animateToPage(
+            currentBannerIndex.value,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          );
+        } catch (e) {
+          // Handle potential disposal race condition
+          timer.cancel();
+        }
       }
     });
   }
@@ -88,7 +93,10 @@ class DashboardController extends GetxController {
     if (!hasSeenPopup) {
       // Show popup after a short delay
       Future.delayed(const Duration(milliseconds: 800), () {
-        _showWelcomePopup(context);
+        // Check if context is still valid before showing dialog
+        if (context.mounted) {
+          _showWelcomePopup(context);
+        }
       });
     }
   }
