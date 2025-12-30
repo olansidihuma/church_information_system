@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:church_information_system/models/bible_models.dart';
 import 'package:church_information_system/services/notification_service.dart';
 import 'package:uuid/uuid.dart';
+import 'package:xml/xml.dart' as xml;
 
 /// Bible Service
 /// 
@@ -47,6 +49,44 @@ class BibleService extends GetxService {
     } catch (e) {
       return null;
     }
+  }
+  
+  // ============ Bible Content from XML ============
+  
+  /// Load chapter content from alkitab.xml
+  Future<BibleChapter?> loadChapter(String bookName, int chapterNumber) async {
+    try {
+      // Load the XML file from assets
+      final xmlString = await rootBundle.loadString('assets/alkitab.xml');
+      final document = xml.XmlDocument.parse(xmlString);
+      
+      // Find the book
+      final bookElement = document.findAllElements('BIBLEBOOK')
+          .firstWhere((element) => element.getAttribute('bname') == bookName);
+      
+      // Find the chapter
+      final chapterElement = bookElement.findAllElements('CHAPTER')
+          .firstWhere((element) => element.getAttribute('cnumber') == chapterNumber.toString());
+      
+      // Extract verses
+      final verses = <BibleVerse>[];
+      for (final verseElement in chapterElement.findAllElements('VERS')) {
+        final verseNumber = int.parse(verseElement.getAttribute('vnumber') ?? '0');
+        final verseText = verseElement.innerText.trim();
+        verses.add(BibleVerse(number: verseNumber, text: verseText));
+      }
+      
+      return BibleChapter(number: chapterNumber, verses: verses);
+    } catch (e) {
+      print('Error loading chapter: $e');
+      return null;
+    }
+  }
+  
+  /// Get book name from book ID for XML lookup
+  String? getBookNameForXml(String bookId) {
+    final book = getBookById(bookId);
+    return book?.name;
   }
   
   // ============ Reading Progress ============

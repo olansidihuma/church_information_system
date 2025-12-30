@@ -49,6 +49,7 @@ class AppRoutes {
   // Bible Reading Routes
   static const String bible = '/bible';
   static const String bibleReading = '/bible-reading';
+  static const String bibleChapter = '/bible/chapter';
   static const String bibleProgress = '/bible-progress';
   static const String bibleSchedule = '/bible-schedule';
 }
