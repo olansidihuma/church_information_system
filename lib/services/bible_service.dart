@@ -11,7 +11,7 @@ import 'package:xml/xml.dart' as xml;
 /// 
 /// Manages offline Bible reading data, progress tracking, and schedules
 class BibleService extends GetxService {
-  late SharedPreferences _prefs;
+  SharedPreferences? _prefs;
   
   // Storage Keys
   static const String keyCurrentProgress = 'bible_current_progress';
@@ -107,15 +107,16 @@ class BibleService extends GetxService {
   
   /// Get current reading progress
   ReadingProgress? getCurrentProgress() {
-    final data = _prefs.getString(keyCurrentProgress);
+    final data = _prefs?.getString(keyCurrentProgress);
     if (data == null) return null;
     return ReadingProgress.fromJson(json.decode(data));
   }
   
   /// Save reading progress
   Future<bool> saveProgress(ReadingProgress progress) async {
+    if (_prefs == null) return false;
     final data = json.encode(progress.toJson());
-    final success = await _prefs.setString(keyCurrentProgress, data);
+    final success = await _prefs!.setString(keyCurrentProgress, data);
     
     // Update today's record
     if (success) {
@@ -176,7 +177,7 @@ class BibleService extends GetxService {
   
   /// Get all reading schedules
   List<ReadingSchedule> getSchedules() {
-    final data = _prefs.getString(keyReadingSchedules);
+    final data = _prefs?.getString(keyReadingSchedules);
     if (data == null) return [];
     
     final List<dynamic> list = json.decode(data);
@@ -185,8 +186,9 @@ class BibleService extends GetxService {
   
   /// Save schedules
   Future<bool> _saveSchedules(List<ReadingSchedule> schedules) async {
+    if (_prefs == null) return false;
     final data = json.encode(schedules.map((s) => s.toJson()).toList());
-    return await _prefs.setString(keyReadingSchedules, data);
+    return await _prefs!.setString(keyReadingSchedules, data);
   }
   
   /// Add reading schedule
@@ -259,7 +261,7 @@ class BibleService extends GetxService {
   
   /// Get today's reading record
   DailyReadingRecord? getTodayRecord() {
-    final data = _prefs.getString(keyTodayRecord);
+    final data = _prefs?.getString(keyTodayRecord);
     if (data == null) return null;
     
     final record = DailyReadingRecord.fromJson(json.decode(data));
@@ -277,6 +279,7 @@ class BibleService extends GetxService {
   
   /// Update today's record
   Future<void> _updateTodayRecord(ReadingProgress progress) async {
+    if (_prefs == null) return;
     final today = DateTime.now();
     final existing = getTodayRecord();
     
@@ -288,12 +291,12 @@ class BibleService extends GetxService {
     );
     
     final data = json.encode(record.toJson());
-    await _prefs.setString(keyTodayRecord, data);
+    await _prefs!.setString(keyTodayRecord, data);
   }
   
   /// Get all reading records
   List<DailyReadingRecord> getAllRecords() {
-    final data = _prefs.getString(keyDailyRecords);
+    final data = _prefs?.getString(keyDailyRecords);
     if (data == null) return [];
     
     final List<dynamic> list = json.decode(data);
