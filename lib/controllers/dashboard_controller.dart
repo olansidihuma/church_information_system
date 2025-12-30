@@ -59,7 +59,8 @@ class DashboardController extends GetxController {
     try {
       bannerPageController.dispose();
     } catch (e) {
-      // Handle potential disposal error
+      // PageController may already be disposed if timer tried to use it
+      // This is safe to ignore as we're cleaning up
     }
     super.onClose();
   }
@@ -90,7 +91,8 @@ class DashboardController extends GetxController {
             curve: Curves.easeInOut,
           );
         } catch (e) {
-          // Handle potential disposal race condition
+          // Controller may be disposed during animation
+          // Cancel timer to prevent further attempts
           timer.cancel();
         }
       }
@@ -110,11 +112,6 @@ class DashboardController extends GetxController {
         }
       });
     }
-  }
-
-  void showPopupBannerIfNeeded(BuildContext context) {
-    // Deprecated: Use onReady lifecycle method instead
-    // This method is kept for backward compatibility but does nothing
   }
 
   void _showWelcomePopup(BuildContext context) {

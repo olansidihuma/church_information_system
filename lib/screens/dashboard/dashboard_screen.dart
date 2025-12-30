@@ -391,6 +391,8 @@ class DashboardScreen extends GetView<DashboardController> {
   }
 
   Widget _buildQuickStats(BuildContext context) {
+    // TODO: Connect to actual data sources for dynamic stats
+    // For now, using placeholder values for visual demonstration
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
@@ -399,7 +401,7 @@ class DashboardScreen extends GetView<DashboardController> {
             child: _StatCard(
               icon: Icons.event_rounded,
               title: 'Upcoming',
-              value: '5',
+              value: '5', // TODO: Get from controller/API
               subtitle: 'Events',
               color: const Color(0xFF667EEA),
             ),
@@ -409,7 +411,7 @@ class DashboardScreen extends GetView<DashboardController> {
             child: _StatCard(
               icon: Icons.favorite_rounded,
               title: 'Active',
-              value: '12',
+              value: '12', // TODO: Get from controller/API
               subtitle: 'Prayers',
               color: const Color(0xFFF5576C),
             ),
@@ -419,7 +421,7 @@ class DashboardScreen extends GetView<DashboardController> {
             child: _StatCard(
               icon: Icons.people_rounded,
               title: 'Members',
-              value: '250+',
+              value: '250+', // TODO: Get from controller/API
               subtitle: 'Community',
               color: const Color(0xFF4FACFE),
             ),
