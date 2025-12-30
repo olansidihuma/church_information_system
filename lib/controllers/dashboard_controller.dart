@@ -47,9 +47,20 @@ class DashboardController extends GetxController {
   }
 
   @override
+  void onReady() {
+    super.onReady();
+    // Show popup after the widget is fully built
+    _checkAndShowPopup();
+  }
+
+  @override
   void onClose() {
     _bannerTimer?.cancel();
-    bannerPageController.dispose();
+    try {
+      bannerPageController.dispose();
+    } catch (e) {
+      // Handle potential disposal error
+    }
     super.onClose();
   }
 
@@ -86,19 +97,24 @@ class DashboardController extends GetxController {
     });
   }
 
-  void showPopupBannerIfNeeded(BuildContext context) {
+  void _checkAndShowPopup() {
     // Check if user has seen the popup banner
     final hasSeenPopup = _storageService.getBool('has_seen_dashboard_popup') ?? false;
     
     if (!hasSeenPopup) {
       // Show popup after a short delay
       Future.delayed(const Duration(milliseconds: 800), () {
-        // Check if context is still valid before showing dialog
-        if (context.mounted) {
-          _showWelcomePopup(context);
+        // Use Get.context for safe context access
+        if (Get.context != null && Get.context!.mounted) {
+          _showWelcomePopup(Get.context!);
         }
       });
     }
+  }
+
+  void showPopupBannerIfNeeded(BuildContext context) {
+    // Deprecated: Use onReady lifecycle method instead
+    // This method is kept for backward compatibility but does nothing
   }
 
   void _showWelcomePopup(BuildContext context) {
@@ -165,7 +181,7 @@ class DashboardController extends GetxController {
           ),
           const SizedBox(height: 12),
           Text(
-            'Welcome to ${userName.value}!',
+            'Welcome, ${userName.value}!',
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 16,

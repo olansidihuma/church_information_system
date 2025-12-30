@@ -9,11 +9,6 @@ class DashboardScreen extends GetView<DashboardController> {
 
   @override
   Widget build(BuildContext context) {
-    // Show popup banner on first load
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      controller.showPopupBannerIfNeeded(context);
-    });
-
     return Scaffold(
       backgroundColor: const Color(0xFFF8F9FA),
       appBar: AppBar(
