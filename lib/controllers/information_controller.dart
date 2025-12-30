@@ -69,7 +69,7 @@ class InformationController extends GetxController {
         title: 'Kebaktian Minggu - Kasih yang Sejati',
         description: 'Khotbah tentang kasih Allah yang sempurna bagi kita',
         videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnailUrl: 'assets/images/video1.jpg',
+        thumbnailUrl: '', // Using gradient placeholder
         category: 'worship',
         uploadDate: DateTime.now().subtract(const Duration(days: 7)),
         duration: 2400, // 40 minutes
@@ -79,7 +79,7 @@ class InformationController extends GetxController {
         title: 'Kesaksian: Mujizat Kesembuhan',
         description: 'Kesaksian nyata tentang kuasa Tuhan dalam kehidupan',
         videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnailUrl: 'assets/images/video2.jpg',
+        thumbnailUrl: '', // Using gradient placeholder
         category: 'testimony',
         uploadDate: DateTime.now().subtract(const Duration(days: 5)),
         duration: 900, // 15 minutes
@@ -89,7 +89,7 @@ class InformationController extends GetxController {
         title: 'Pengajaran: Hidup dalam Iman',
         description: 'Belajar tentang kehidupan yang beriman kepada Tuhan',
         videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnailUrl: 'assets/images/video3.jpg',
+        thumbnailUrl: '', // Using gradient placeholder
         category: 'teaching',
         uploadDate: DateTime.now().subtract(const Duration(days: 3)),
         duration: 1800, // 30 minutes
@@ -99,7 +99,7 @@ class InformationController extends GetxController {
         title: 'Retret Pemuda 2024',
         description: 'Highlight dari retret pemuda tahun ini',
         videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnailUrl: 'assets/images/video4.jpg',
+        thumbnailUrl: '', // Using gradient placeholder
         category: 'events',
         uploadDate: DateTime.now().subtract(const Duration(days: 1)),
         duration: 600, // 10 minutes
@@ -114,7 +114,7 @@ class InformationController extends GetxController {
         id: '1',
         title: 'Kebaktian Natal 2024',
         content: 'Kebaktian Natal akan dilaksanakan pada tanggal 24 Desember 2024 pukul 19.00. Mari bersama-sama merayakan kelahiran Tuhan Yesus Kristus.',
-        imageUrl: 'assets/images/news1.jpg',
+        imageUrl: '', // Using gradient placeholder
         date: DateTime.now().subtract(const Duration(days: 2)),
         category: 'announcement',
       ),
@@ -122,7 +122,7 @@ class InformationController extends GetxController {
         id: '2',
         title: 'Retret Pemuda',
         content: 'Retret pemuda akan diadakan pada tanggal 5-7 Januari 2025 di Puncak. Pendaftaran dibuka hingga 28 Desember 2024.',
-        imageUrl: 'assets/images/news2.jpg',
+        imageUrl: '', // Using gradient placeholder
         date: DateTime.now().subtract(const Duration(days: 1)),
         category: 'event',
       ),

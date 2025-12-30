@@ -92,19 +92,19 @@ class HomeController extends GetxController {
         id: '1',
         title: 'Selamat Datang di Gereja Kami',
         description: 'Bergabunglah dalam ibadah dan persekutuan',
-        imageUrl: 'assets/images/banner1.jpg',
+        imageUrl: '', // Using gradient placeholder
       ),
       BannerModel(
         id: '2',
         title: 'Ibadah Minggu',
         description: 'Setiap Minggu pukul 08.00 & 17.00',
-        imageUrl: 'assets/images/banner2.jpg',
+        imageUrl: '', // Using gradient placeholder
       ),
       BannerModel(
         id: '3',
         title: 'Persekutuan Doa',
         description: 'Setiap Rabu pukul 19.00',
-        imageUrl: 'assets/images/banner3.jpg',
+        imageUrl: '', // Using gradient placeholder
       ),
     ];
   }
@@ -116,7 +116,7 @@ class HomeController extends GetxController {
         id: '1',
         title: 'Kebaktian Natal 2024',
         content: 'Kebaktian Natal akan dilaksanakan pada tanggal 24 Desember 2024 pukul 19.00. Mari bersama-sama merayakan kelahiran Tuhan Yesus Kristus.',
-        imageUrl: 'assets/images/news1.jpg',
+        imageUrl: '', // Using gradient placeholder
         date: DateTime.now().subtract(const Duration(days: 2)),
         category: 'announcement',
       ),
@@ -124,7 +124,7 @@ class HomeController extends GetxController {
         id: '2',
         title: 'Retret Pemuda',
         content: 'Retret pemuda akan diadakan pada tanggal 5-7 Januari 2025 di Puncak. Pendaftaran dibuka hingga 28 Desember 2024.',
-        imageUrl: 'assets/images/news2.jpg',
+        imageUrl: '', // Using gradient placeholder
         date: DateTime.now().subtract(const Duration(days: 1)),
         category: 'event',
       ),
@@ -132,7 +132,7 @@ class HomeController extends GetxController {
         id: '3',
         title: 'Pelayanan Sosial',
         content: 'Gereja mengadakan pelayanan sosial untuk masyarakat sekitar. Mari berpartisipasi dalam membagikan kasih Kristus.',
-        imageUrl: 'assets/images/news3.jpg',
+        imageUrl: '', // Using gradient placeholder
         date: DateTime.now(),
         category: 'ministry',
       ),
