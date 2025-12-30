@@ -9,11 +9,11 @@ class AppTheme {
   // Prevent instantiation
   AppTheme._();
   
-  // Color Palette
-  static const Color primaryColor = Color(0xFF2C3E50);
-  static const Color secondaryColor = Color(0xFF3498DB);
-  static const Color accentColor = Color(0xFFE74C3C);
-  static const Color backgroundColor = Color(0xFFF5F6FA);
+  // Color Palette - Modern & Fresh
+  static const Color primaryColor = Color(0xFF667EEA);
+  static const Color secondaryColor = Color(0xFF764BA2);
+  static const Color accentColor = Color(0xFFF5576C);
+  static const Color backgroundColor = Color(0xFFF8F9FA);
   static const Color surfaceColor = Colors.white;
   static const Color textPrimaryColor = Color(0xFF2C3E50);
   static const Color textSecondaryColor = Color(0xFF7F8C8D);
