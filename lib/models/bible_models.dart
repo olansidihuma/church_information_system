@@ -33,6 +33,52 @@ class BibleBook {
   );
 }
 
+/// Bible Verse Model
+///
+/// Represents a single verse with its content
+class BibleVerse {
+  final int number;
+  final String text;
+
+  BibleVerse({
+    required this.number,
+    required this.text,
+  });
+
+  Map<String, dynamic> toJson() => {
+    'number': number,
+    'text': text,
+  };
+
+  factory BibleVerse.fromJson(Map<String, dynamic> json) => BibleVerse(
+    number: json['number'],
+    text: json['text'],
+  );
+}
+
+/// Bible Chapter Model
+///
+/// Represents a chapter with its verses
+class BibleChapter {
+  final int number;
+  final List<BibleVerse> verses;
+
+  BibleChapter({
+    required this.number,
+    required this.verses,
+  });
+
+  Map<String, dynamic> toJson() => {
+    'number': number,
+    'verses': verses.map((v) => v.toJson()).toList(),
+  };
+
+  factory BibleChapter.fromJson(Map<String, dynamic> json) => BibleChapter(
+    number: json['number'],
+    verses: (json['verses'] as List).map((v) => BibleVerse.fromJson(v)).toList(),
+  );
+}
+
 /// Reading Progress Model
 /// 
 /// Tracks user's Bible reading progress

@@ -131,6 +131,14 @@ class BibleController extends GetxController {
   BibleBook? getBookById(String bookId) {
     return _bibleService.getBookById(bookId);
   }
+  
+  /// Load chapter content
+  Future<BibleChapter?> loadChapter(String bookId, int chapterNumber) async {
+    final bookName = _bibleService.getBookNameForXml(bookId);
+    if (bookName == null) return null;
+    
+    return await _bibleService.loadChapter(bookName, chapterNumber);
+  }
 
   /// Change testament filter
   void changeTestament(String testament) {

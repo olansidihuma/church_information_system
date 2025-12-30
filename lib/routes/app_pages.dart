@@ -26,6 +26,7 @@ import 'package:church_information_system/screens/family/add_family_member_scree
 import 'package:church_information_system/screens/family/family_binding.dart';
 import 'package:church_information_system/screens/bible/bible_screen.dart';
 import 'package:church_information_system/screens/bible/bible_reading_screen.dart';
+import 'package:church_information_system/screens/bible/bible_chapter_screen.dart';
 import 'package:church_information_system/screens/bible/bible_progress_screen.dart';
 import 'package:church_information_system/screens/bible/bible_schedule_screen.dart';
 import 'package:church_information_system/screens/bible/bible_binding.dart';
@@ -133,6 +134,11 @@ class AppPages {
     GetPage(
       name: AppRoutes.bibleReading,
       page: () => const BibleReadingScreen(),
+      binding: BibleBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.bibleChapter,
+      page: () => const BibleChapterScreen(),
       binding: BibleBinding(),
     ),
     GetPage(

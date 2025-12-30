@@ -121,40 +121,12 @@ class BibleReadingScreen extends GetView<BibleController> {
   }
 
   void _navigateToChapter(BuildContext context, BibleBook book, int chapter) {
-    final verses = book.versesPerChapter[chapter - 1];
-    
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('${book.name} Pasal $chapter'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Jumlah ayat: $verses'),
-            const SizedBox(height: 16),
-            const Text(
-              'Catatan: Fitur pembacaan penuh Alkitab memerlukan data teks lengkap. '
-              'Saat ini Anda dapat menandai progress bacaan Anda.',
-              style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: const Text('Tutup'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Get.back();
-              _updateProgress(book.id, chapter, 1);
-            },
-            child: const Text('Tandai Sebagai Dibaca'),
-          ),
-        ],
-      ),
-    );
+    // Navigate to chapter reading screen
+    Get.toNamed('/bible/chapter', arguments: {
+      'bookId': book.id,
+      'bookName': book.name,
+      'chapterNumber': chapter,
+    });
   }
 
   void _updateProgress(String bookId, int chapter, int verse) {

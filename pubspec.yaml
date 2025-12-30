@@ -48,6 +48,9 @@ dependencies:
   
   # UUID Generator
   uuid: ^4.3.3
+  
+  # XML Parser
+  xml: ^6.5.0
 
 dev_dependencies:
   flutter_test:
