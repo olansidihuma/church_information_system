@@ -8,7 +8,7 @@ import 'package:church_information_system/models/news_model.dart';
 /// Handles home screen logic and church activities display
 class HomeController extends GetxController {
   final ApiService _apiService = ApiService();
-  final StorageService _storageService = StorageService();
+  final StorageService _storageService = Get.find<StorageService>();
   
   final activities = <Map<String, dynamic>>[].obs;
   final banners = <BannerModel>[].obs;

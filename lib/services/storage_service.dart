@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Provides methods to store and retrieve data locally on the device.
 /// Used for saving user session, preferences, and cached data.
 class StorageService extends GetxService {
-  late SharedPreferences _prefs;
+  SharedPreferences? _prefs;
   
   /// Initialize the storage service
   Future<StorageService> init() async {
@@ -28,132 +28,146 @@ class StorageService extends GetxService {
   
   /// Save authentication token
   Future<bool> saveAuthToken(String token) async {
-    return await _prefs.setString(keyAuthToken, token);
+    if (_prefs == null) return false;
+    return await _prefs!.setString(keyAuthToken, token);
   }
   
   /// Get authentication token
   String? getAuthToken() {
-    return _prefs.getString(keyAuthToken);
+    return _prefs?.getString(keyAuthToken);
   }
   
   /// Save user ID
   Future<bool> saveUserId(String userId) async {
-    return await _prefs.setString(keyUserId, userId);
+    if (_prefs == null) return false;
+    return await _prefs!.setString(keyUserId, userId);
   }
   
   /// Get user ID
   String? getUserId() {
-    return _prefs.getString(keyUserId);
+    return _prefs?.getString(keyUserId);
   }
   
   /// Save user name
   Future<bool> saveUserName(String name) async {
-    return await _prefs.setString(keyUserName, name);
+    if (_prefs == null) return false;
+    return await _prefs!.setString(keyUserName, name);
   }
   
   /// Get user name
   String? getUserName() {
-    return _prefs.getString(keyUserName);
+    return _prefs?.getString(keyUserName);
   }
   
   /// Save user email
   Future<bool> saveUserEmail(String email) async {
-    return await _prefs.setString(keyUserEmail, email);
+    if (_prefs == null) return false;
+    return await _prefs!.setString(keyUserEmail, email);
   }
   
   /// Get user email
   String? getUserEmail() {
-    return _prefs.getString(keyUserEmail);
+    return _prefs?.getString(keyUserEmail);
   }
   
   /// Set login status
   Future<bool> setLoggedIn(bool value) async {
-    return await _prefs.setBool(keyIsLoggedIn, value);
+    if (_prefs == null) return false;
+    return await _prefs!.setBool(keyIsLoggedIn, value);
   }
   
   /// Check if user is logged in
   bool isLoggedIn() {
-    return _prefs.getBool(keyIsLoggedIn) ?? false;
+    return _prefs?.getBool(keyIsLoggedIn) ?? false;
   }
   
   /// Save complete user data as JSON string
   Future<bool> saveUserData(String userData) async {
-    return await _prefs.setString(keyUserData, userData);
+    if (_prefs == null) return false;
+    return await _prefs!.setString(keyUserData, userData);
   }
   
   /// Get user data as JSON string
   String? getUserData() {
-    return _prefs.getString(keyUserData);
+    return _prefs?.getString(keyUserData);
   }
   
   // Settings Methods
   
   /// Enable/disable notifications
   Future<bool> setNotificationEnabled(bool enabled) async {
-    return await _prefs.setBool(keyNotificationEnabled, enabled);
+    if (_prefs == null) return false;
+    return await _prefs!.setBool(keyNotificationEnabled, enabled);
   }
   
   /// Check if notifications are enabled
   bool isNotificationEnabled() {
-    return _prefs.getBool(keyNotificationEnabled) ?? true;
+    return _prefs?.getBool(keyNotificationEnabled) ?? true;
   }
 
   // First Load Methods
 
   /// Check if this is the first load
   Future<bool> isFirstLoad() async {
-    return !(_prefs.getBool(keyFirstLoad) ?? false);
+    return !(_prefs?.getBool(keyFirstLoad) ?? false);
   }
 
   /// Mark first load as complete
   Future<bool> setFirstLoadComplete() async {
-    return await _prefs.setBool(keyFirstLoad, true);
+    if (_prefs == null) return false;
+    return await _prefs!.setBool(keyFirstLoad, true);
   }
   
   // General Methods
   
   /// Save a string value
   Future<bool> saveString(String key, String value) async {
-    return await _prefs.setString(key, value);
+    if (_prefs == null) return false;
+    return await _prefs!.setString(key, value);
   }
   
   /// Get a string value
   String? getString(String key) {
-    return _prefs.getString(key);
+    return _prefs?.getString(key);
   }
   
   /// Save an integer value
   Future<bool> saveInt(String key, int value) async {
-    return await _prefs.setInt(key, value);
+    if (_prefs == null) return false;
+    return await _prefs!.setInt(key, value);
   }
   
   /// Get an integer value
   int? getInt(String key) {
-    return _prefs.getInt(key);
+    return _prefs?.getInt(key);
   }
   
   /// Save a boolean value
   Future<bool> saveBool(String key, bool value) async {
-    return await _prefs.setBool(key, value);
+    if (_prefs == null) return false;
+    return await _prefs!.setBool(key, value);
   }
   
   /// Get a boolean value
   bool? getBool(String key) {
-    return _prefs.getBool(key);
+    return _prefs?.getBool(key);
   }
   
   /// Remove a specific key
   Future<bool> remove(String key) async {
-    return await _prefs.remove(key);
+    if (_prefs == null) return false;
+    return await _prefs!.remove(key);
   }
   
   /// Clear all stored data (logout)
   Future<bool> clearAll() async {
-    return await _prefs.clear();
+    if (_prefs == null) return false;
+    return await _prefs!.clear();
   }
   
   /// Logout user (clear auth data)
   Future<void> logout() async {
+    if (_prefs == null) return;
     await remove(keyAuthToken);
     await remove(keyUserId);
     await remove(keyUserName);
